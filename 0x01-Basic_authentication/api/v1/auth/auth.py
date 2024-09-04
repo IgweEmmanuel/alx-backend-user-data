@@ -4,7 +4,7 @@ This is the authentication file to authenticate
 users
 """
 from flask import request
-from typing import List
+from typing import List, TypeVar
 
 
 class Auth:
