@@ -25,10 +25,10 @@ if auth:
 def before_request(f):
     """ Filters request before request
     """
-    if auth is not None:
+    if auth is None:
         return
 
-    if is auth.require_auth(request.path, excluded_paths):
+    if not auth.require_auth(request.path, excluded_paths):
         return
 
     if auth.authorization_header(request) is None:
