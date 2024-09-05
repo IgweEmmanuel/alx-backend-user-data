@@ -9,7 +9,7 @@ from flask_cors import (CORS, cross_origin)
 import os
 from api.v1.auth.auth import Auth
 
-excluded_paths = "['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']"
+excluded_paths = "['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']"  # noqa
 
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ if auth:
 def before_request(f):
     """ Filters request before request
     """
-    if auth is not  None:
+    if auth is not None:
         return
 
     if is auth.require_auth(request.path, excluded_paths):
