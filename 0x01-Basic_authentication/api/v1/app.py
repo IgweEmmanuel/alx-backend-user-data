@@ -27,6 +27,7 @@ if auth_var == 'basic_auth':
 if auth_var == 'auth':
     auth = Auth()
 
+
 @app.before_request
 def authenticate_user():
     """ Filters request before request
