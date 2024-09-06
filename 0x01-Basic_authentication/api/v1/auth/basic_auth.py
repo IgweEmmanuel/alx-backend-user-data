@@ -62,5 +62,5 @@ class BasicAuth(Auth):
         if ':' not in decoded_base64_authorization_header:
             return (None, None)
 
-        email, password = decoded_base64_authorization_header.split(':')
+        email, password = decoded_base64_authorization_header.split(':', 1)  # the 1 stands for first occurrence of ':' noqa 
         return (email, password)
