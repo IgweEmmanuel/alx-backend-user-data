@@ -43,7 +43,7 @@ class Auth:
         if request is None:
             return None
 
-        for key, value in request.items():
+        for key, value in request.headers:
             if key == 'Authorization':
                 return value
             return None
