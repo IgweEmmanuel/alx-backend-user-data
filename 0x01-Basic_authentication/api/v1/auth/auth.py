@@ -46,7 +46,7 @@ class Auth:
         for key, value in request.items():
             if key != 'Authorization':
                 return None
-            return request.headers.get('Authorization', None)
+            return request.headers.get('Authorization')
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
