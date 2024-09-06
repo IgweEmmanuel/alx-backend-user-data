@@ -18,15 +18,14 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 auth = None
 
-auth_var = os.getenv('AUTH_TYPE')
+auth_var = os.getenv('AUTH_TYPE', 'auth')
 
 if auth_var == 'auth':
-    from api.v1.auth.auth import Auth
-    auth = Auth
+    auth = Auth()
 
 
 @app.before_request
-def before_request(f):
+def authenticate_user():
     """ Filters request before request
     """
     if auth is None:
@@ -37,6 +36,7 @@ def before_request(f):
 
     if auth.authorization_header(request) is None:
         abort(401)
+
     if auth.current_user(request) is None:
         abort(403)
 
