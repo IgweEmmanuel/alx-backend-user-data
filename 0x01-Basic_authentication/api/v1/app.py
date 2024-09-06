@@ -8,6 +8,7 @@ from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
 import os
 from api.v1.auth.auth import Auth
+from api.v1.auth.basic_auth import BasicAuth
 
 excluded_paths = "['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']"  # noqa
 
@@ -20,9 +21,11 @@ auth = None
 
 auth_var = os.getenv('AUTH_TYPE', 'auth')
 
+if auth_var == 'basic_auth':
+    auth = BasicAuth()
+
 if auth_var == 'auth':
     auth = Auth()
-
 
 @app.before_request
 def authenticate_user():
