@@ -40,15 +40,13 @@ class Auth:
         Return:
             - returns string
         """
-        res = None
         if request is None:
             return None
 
         for key, value in request.headers:
-            if key == 'Authorization':
-                res = value
-                return res
-            return None
+            if key != 'Authorization':
+                return None
+            return value
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
