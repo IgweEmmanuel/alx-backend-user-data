@@ -5,6 +5,8 @@ import base64
 from typing import TypeVar
 from models.user import User
 
+user = User()
+
 
 class BasicAuth(Auth):
     """BasicAuth class"""
@@ -77,8 +79,6 @@ class BasicAuth(Auth):
         Return:
             - returns user email and password
         """
-        user = User()
-
         if user_email is None or not isinstance(user_email, str):
             return None
 
