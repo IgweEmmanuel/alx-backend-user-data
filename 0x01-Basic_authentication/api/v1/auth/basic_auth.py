@@ -102,7 +102,7 @@ class BasicAuth(Auth):
         Return:
             - teturns User object instance
         """
-        auth_header = self.authorization(request)
+        auth_header = self.authorization_header(request)
         if auth_header is None:
             return None
 
