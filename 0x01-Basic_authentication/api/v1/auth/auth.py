@@ -22,7 +22,10 @@ class Auth:
         if path is None:
             return True
 
-        if excluded_paths is None or len(excluded_paths) == 0 or excluded_paths.endswith('*'):  # noqa
+        if excluded_paths is None or len(excluded_paths) == 0:
+            return True
+
+        if excluded_paths.endswith('*'):
             return True
 
         if not path.endswith('/'):
