@@ -10,7 +10,7 @@ from typing import List, TypeVar
 class Auth:
     """ The authentication class"""
 
-    def require_auth(self, path: str, excluded_paths: List[str], end="/") -> bool:  # noqa
+    def require_auth(self, path: str, excluded_paths: List[str], end="*") -> bool:  # noqa
         """
         The authentication public method
         Args:
