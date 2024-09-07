@@ -103,7 +103,19 @@ class BasicAuth(Auth):
             - teturns User object instance
         """
         auth_header = self.authorization(request)
+        if auth_header is None:
+            return None
+
         base64_req = self.extract_base64_authorization_header(auth_header)
+        if base64_req is None:
+            return None
+
         decode_req = self.decode_base64_authorization_header(base64_req)
+        if decode_req is None:
+            return None
+
         email, password = self.extract_user_credentials(decode_req)
+        if email is None or password is None:
+            return None
+
         return self.user_object_from_credentials(email, password)
