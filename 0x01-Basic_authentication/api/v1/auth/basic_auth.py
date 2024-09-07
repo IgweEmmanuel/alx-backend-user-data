@@ -68,6 +68,9 @@ class BasicAuth(Auth):
         email, password = decoded_base64_authorization_header.split(':', 1)  # noqa
         return (email, password)
 
+        if ':' in password:
+            return True
+
     def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):  # noqa
         """
         user credentials
@@ -119,15 +122,3 @@ class BasicAuth(Auth):
             return None
 
         return self.user_object_from_credentials(email, password)
-
-    def extract_user_credentials(self, decoded_base64_authorization_header):
-        """
-        User credential
-        Args:
-            decoded_base64(str): decoded base64
-        Return:
-            - return the user credentials
-        """
-        email, password = decoded_base64_authorization_header.split(':', 1)
-        if email and ':' in password:
-            return True
