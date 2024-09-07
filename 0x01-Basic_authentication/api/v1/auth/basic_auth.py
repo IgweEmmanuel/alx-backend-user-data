@@ -129,5 +129,5 @@ class BasicAuth(Auth):
             - return the user credentials
         """
         email, password = decoded_base64_authorization_header.split(':', 1)
-        if ':' in password:
+        if email and ':' in password:
             return True
