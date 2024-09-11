@@ -1,3 +1,3 @@
 Session Authentication
 
-Authentication of user endpoint access
+This is a session authentication folder for authenticating users
